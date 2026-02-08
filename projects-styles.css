@@ -83,25 +83,24 @@
 /* RIGHT SIDE: The Robot Container */
 .robot-container {
     width: 100%;
-    height: 500px; /* Fixed height is MANDATORY */
-    background: var(--secondary-color); /* #181a1b */
+    height: 500px; /* This MUST be a fixed pixel value */
+    background: var(--secondary-color); 
     border-radius: 12px;
-    position: relative;
-    overflow: hidden; /* THIS IS THE FIX: Cuts off the giant canvas */
+    position: relative; /* This keeps the robot 'inside' */
+    overflow: hidden; 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
 }
 
-/* Force the canvas to behave */
-.robot-container canvas {
-    display: block;
+/* This forces the Three.js canvas to stay exactly in the box */
+#robot-canvas-container canvas {
+    position: absolute !important;
+    top: 0;
+    left: 0;
     width: 100% !important;
     height: 100% !important;
-    outline: none;
 }
-
 /* Mobile: Stack them vertically */
 @media (max-width: 992px) {
     .projects-container {
@@ -113,3 +112,4 @@
         margin-bottom: 40px;
     }
 }
+
