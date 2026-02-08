@@ -126,3 +126,10 @@ spline-viewer {
 
 }
 
+/* Update in projects-styles.css */
+.robot-container canvas {
+    outline: none;
+    user-select: none;
+}
+
+
