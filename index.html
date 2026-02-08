@@ -167,6 +167,31 @@
         </div>
       </section>
 
+      <script>
+  // This function waits for the Spline viewer to load and then hides the logo
+  const removeSplineLogo = () => {
+    const viewer = document.querySelector('spline-viewer');
+    
+    if (viewer && viewer.shadowRoot) {
+      // Targets the logo by its ID and the link it sits in
+      const logo = viewer.shadowRoot.querySelector('#logo');
+      if (logo) {
+        logo.style.display = 'none';
+        console.log("Spline watermark removed!");
+      }
+    }
+  };
+
+  // Run the check every 500ms until the logo is found and hidden
+  const logoInterval = setInterval(() => {
+    const viewer = document.querySelector('spline-viewer');
+    if (viewer && viewer.shadowRoot && viewer.shadowRoot.querySelector('#logo')) {
+      removeSplineLogo();
+      clearInterval(logoInterval);
+    }
+  }, 500);
+</script>
+
       <section id="projects" class="projects-section">
         <div class="projects-container">
           <div class="projects-content">
@@ -294,3 +319,4 @@
     <script type="module" src="robot-logic.js"></script>
   </body>
 </html>
+
