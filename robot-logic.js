@@ -3,99 +3,52 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const container = document.getElementById('robot-canvas-container');
 
-// 1. Scene Setup
 const scene = new THREE.Scene();
-// NOTE: We do NOT set scene.background here. 
-// This allows the CSS background (#181a1b) to show through.
 
-// 2. Camera Setup
+// CAMERA: Adjusted to center the robot better
 const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-camera.position.set(0, 1.5, 6); // Positioned to look at the robot face-on
-camera.lookAt(0, 1.5, 0);
+camera.position.set(0, 0, 8); // Moved back slightly
 
-// 3. Renderer Setup (Transparent)
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // High quality but performant
+renderer.setPixelRatio(window.devicePixelRatio);
 container.appendChild(renderer.domElement);
 
-// 4. Lighting (Professional Studio Light)
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7); // Soft white light
+// LIGHTING
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
+const topLight = new THREE.DirectionalLight(0xffffff, 2);
+topLight.position.set(5, 5, 5);
+scene.add(topLight);
 
-const spotLight = new THREE.SpotLight(0xffffff, 5);
-spotLight.position.set(5, 10, 7);
-spotLight.angle = 0.5;
-spotLight.penumbra = 1;
-scene.add(spotLight);
-
-// 5. Load the Robot
-let robot, neck, waist;
+let robot, neck;
 const loader = new GLTFLoader();
 
-// Loading a high-quality robot model
+// Using the standard GLB model
 loader.load('https://cdn.jsdelivr.net/gh/mrdoob/three.js@master/examples/models/gltf/RobotExpressive/RobotExpressive.glb', 
     (gltf) => {
         robot = gltf.scene;
-        
-        // Adjust these numbers to fit the robot inside your 500px box
-        robot.scale.set(0.6, 0.6, 0.6); 
-        robot.position.y = -2.5; // Move down so feet are at bottom
-        
+        robot.scale.set(0.7, 0.7, 0.7);
+        robot.position.y = -2; // Centers him vertically in the box
         scene.add(robot);
 
-        // Find bones to animate (Neck and Waist)
         robot.traverse((child) => {
-            if (child.isBone) {
-                if (child.name === 'Neck') neck = child;
-                if (child.name === 'Spine') waist = child;
-            }
+            if (child.isBone && child.name === 'Neck') neck = child;
         });
-    },
-    undefined,
-    (error) => {
-        console.error('Error loading robot:', error);
     }
 );
 
-// 6. Mouse Interaction (The "Look At" Effect)
-window.addEventListener('mousemove', (e) => {
-    if (!neck || !waist) return;
-    
-    const rect = container.getBoundingClientRect();
-    
-    // Check if mouse is actually near the robot container
-    const isHovering = 
-        e.clientX >= rect.left && 
-        e.clientX <= rect.right && 
-        e.clientY >= rect.top && 
-        e.clientY <= rect.bottom;
-
-    if (isHovering) {
-        // Calculate mouse position (-1 to +1)
-        const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-        const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-        
-        // Smoothly rotate neck and waist
-        // We use Math.PI to convert degrees to radians
-        neck.rotation.y = x * 0.5;  // Look left/right
-        neck.rotation.x = -y * 0.5; // Look up/down
-        waist.rotation.y = x * 0.2; // Slight body turn
-    }
-});
-
-// 7. Animation Loop
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }
 animate();
 
-// 8. Handle Window Resize
+// Resizer fix: Keeps the robot from "stretching" when you resize the window
 window.addEventListener('resize', () => {
-    if (container) {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-    }
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
 });
