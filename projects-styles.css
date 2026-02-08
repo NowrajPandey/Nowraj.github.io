@@ -1,5 +1,5 @@
 /* ========================================
-   PROJECTS SECTION STYLES
+   PROJECTS SECTION STYLES (FIXED)
    ======================================== */
 
 .projects-section {
@@ -13,20 +13,24 @@
     z-index: 10;
 }
 
+/* THE GRID: Forces text left, robot right */
 .projects-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Equal split for text and robot */
+    grid-template-columns: 1fr 1fr; /* Exactly 50% / 50% split */
     gap: 40px;
     max-width: 1200px;
     width: 100%;
     align-items: center;
     padding: 0 40px;
+    position: relative; /* essential for z-index context */
 }
 
+/* LEFT SIDE: Text */
 .projects-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 2; /* Ensures text sits ON TOP if there's overlap */
 }
 
 .projects-heading {
@@ -41,7 +45,6 @@
     line-height: 1.6;
     color: var(--accent-color);
     margin-bottom: 40px;
-    max-width: 600px;
 }
 
 .project-cards {
@@ -54,7 +57,7 @@
     padding: 24px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px; /* Brand Guideline [cite: 1] */
+    border-radius: 12px;
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -74,27 +77,24 @@
 
 .project-card p {
     font-size: 16px;
-    line-height: 1.5;
     color: var(--accent-color);
 }
 
-/* ========================================
-   ROBOT CONTAINER STYLING
-   ======================================== */
-
+/* RIGHT SIDE: The Robot Container */
 .robot-container {
     width: 100%;
-    height: 550px; /* Increased height for better visibility */
-    background: var(--secondary-color); /* #181a1b per brand guidelines [cite: 1] */
+    height: 500px; /* Fixed height is MANDATORY */
+    background: var(--secondary-color); /* #181a1b */
     border-radius: 12px;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* THIS IS THE FIX: Cuts off the giant canvas */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
-/* Ensure Three.js canvas fills the container */
+/* Force the canvas to behave */
 .robot-container canvas {
     display: block;
     width: 100% !important;
@@ -102,14 +102,14 @@
     outline: none;
 }
 
-/* Mobile fix */
+/* Mobile: Stack them vertically */
 @media (max-width: 992px) {
     .projects-container {
-        grid-template-columns: 1fr;
-        padding: 40px 20px;
+        grid-template-columns: 1fr; /* Stack vertically */
     }
     .robot-container {
         height: 400px;
-        order: -1; /* Robot appears above text on mobile */
+        order: -1; /* Put robot on top */
+        margin-bottom: 40px;
     }
 }
