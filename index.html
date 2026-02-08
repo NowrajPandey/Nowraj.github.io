@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,209 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="projects-styles.css">
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
 </head>
-
 <body>
     <div class="layout-wrapper">
-        <a href="#" class="logo-link">
-            <img src="Assets/signature.png" alt="D.Nova Signature" class="signature-logo">
-        </a>
-        <!-- Mobile Hamburger -->
-        <button class="hamburger-menu" aria-label="Toggle Menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </button>
-
-        <!-- Bubble Navigation -->
-        <div class="nav-container">
-            <div class="nav-wrap">
-                <div class="bubble active-bubble"></div>
-                <div class="bubble hover-bubble"></div>
-                <nav class="nav">
-                    <a class="active" href="#">Home</a>
-                    <a href="#">Projects</a>
-                    <a href="#">Piano</a>
-                    <a href="#">Blogs</a>
-                    <a href="#">Study</a>
-                    <a href="#">About</a>
-                </nav>
-            </div>
-        </div>
-
-        <!-- Mute/Sound Button -->
-        <button id="sound-toggle" class="sound-toggle" aria-label="Toggle Sound">
-            <!-- Speaker Off Icon (Default) -->
-            <svg class="icon-off" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <line x1="1" y1="1" x2="23" y2="23"></line>
-                <path d="M9 9v6a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
-                <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path>
-                <line x1="12" y1="19" x2="12" y2="23"></line>
-                <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-            <!-- Speaker On Icon -->
-            <svg class="icon-on" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" style="display: none;">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                <line x1="12" y1="19" x2="12" y2="23"></line>
-                <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-        </button>
-
-        <audio id="bg-music" loop>
-            <source src="Assets/Background_Music_Loop.wav" type="audio/wav">
-        </audio>
-
-        <script>
-            // Bubble Nav Logic
-            const links = document.querySelectorAll(".nav a");
-            const activeBubble = document.querySelector(".active-bubble");
-            const hoverBubble = document.querySelector(".hover-bubble");
-            const nav = document.querySelector(".nav");
-
-            function moveBubble(element, bubble) {
-                bubble.style.left = `${element.offsetLeft}px`;
-                bubble.style.width = `${element.offsetWidth}px`;
-            }
-
-            // Initialize position for the active link
-            const initialActive = document.querySelector(".nav a.active");
-            if (initialActive) {
-                setTimeout(() => moveBubble(initialActive, activeBubble), 10);
-            }
-
-            links.forEach((link) => {
-                // Click (Active)
-                link.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    links.forEach((l) => l.classList.remove("active"));
-                    link.classList.add("active");
-                    moveBubble(link, activeBubble);
-                });
-
-                // Hover (Ghost Bubble)
-                link.addEventListener("mouseenter", () => {
-                    hoverBubble.style.opacity = "1";
-                    moveBubble(link, hoverBubble);
-                });
-            });
-
-            nav.addEventListener("mouseleave", () => {
-                hoverBubble.style.opacity = "0";
-            });
-
-            // Mobile Menu Logic
-            const hamburger = document.querySelector(".hamburger-menu");
-            const navContainer = document.querySelector(".nav-container");
-
-            hamburger.addEventListener("click", () => {
-                navContainer.classList.toggle("open");
-                hamburger.classList.toggle("active");
-            });
-
-            // Audio Logic
-            const audio = document.getElementById('bg-music');
-            const soundBtn = document.getElementById('sound-toggle');
-            const iconOff = document.querySelector('.icon-off');
-            const iconOn = document.querySelector('.icon-on');
-            let hasInteracted = false;
-
-            function updateIcon(isPlaying) {
-                if (isPlaying) {
-                    iconOff.style.display = 'none';
-                    iconOn.style.display = 'block';
-                    soundBtn.classList.add('playing');
-                } else {
-                    iconOff.style.display = 'block';
-                    iconOn.style.display = 'none';
-                    soundBtn.classList.remove('playing');
-                }
-            }
-
-            function playAudio() {
-                if (!hasInteracted) {
-                    hasInteracted = true;
-                    audio.volume = 0.5; // Start at 50% volume
-                    audio.play().then(() => {
-                        updateIcon(true);
-                    }).catch(e => console.log("Audio autoplay blocked:", e));
-                }
-            }
-
-            // Play on first scroll or click
-            window.addEventListener('scroll', playAudio, { once: true });
-            window.addEventListener('click', playAudio, { once: true });
-
-            // Toggle Button
-            soundBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Don't trigger the window click
-                if (audio.paused) {
-                    audio.play();
-                    updateIcon(true);
-                } else {
-                    audio.pause();
-                    updateIcon(false);
-                }
-            });
-        </script>
-
-        <!-- Main Content (Hero) -->
-        <main class="hero-section">
-            <div class="text-content">
-                <span class="hero-eyebrow">Hi there,</span>
-                <h1 class="hero-title">I am Nowraj Pandey, <br> a student and aspiring developer</h1>
-                <p class="hero-description">currently studying in Class 11 in West Point School</p>
-
-                <div class="scroll-indicator">
-                    Scroll down &darr;
-                </div>
-            </div>
-
-            <!-- Image Area - Absolute Positioning Fix -->
-            <div class="image-content">
-                <div class="image-wrapper">
-                    <img src="Assets/Hero_Image_Clean.png" alt="Nowraj Pandey" class="hero-image">
-                </div>
-            </div>
-        </main>
-
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="about-container">
-                <div class="about-image-wrapper">
-                    <img src="Assets/About_Page_Image.jpeg" alt="Nowraj Pandey Portrait" class="about-image">
-                </div>
-                <div class="about-content">
-                    <h2 class="about-heading">Nowraj Pandey is</h2>
-
-                    <div class="typewriter-container">
-                        <span class="typewriter-dynamic"></span>
-                    </div>
-
-                    <div class="about-bio">
-                        <p>I am an aspiring developer and 11th-grade student at West Point School (ISC), driven by a
-                            passion for building the future of the web. For over two years, I've been immersed in 'vibe
-                            coding'—leveraging AI and intuitive tools to bring ideas to life rapidly.</p>
-
-                        <p>My goal is to bridge the gap between imagination and functional software, eventually
-                            engineering AI-driven solutions at industry leaders like Google or Microsoft. I'm dedicated
-                            to refining my craft, scaling my skills, and building a career that makes a meaningful
-                            impact (and my parents proud).</p>
-                    </div>
-
-                    <div class="about-actions">
-                        <a href="#" class="btn-primary">RESUME</a>
-                        <a href="#" class="btn-outline">LINKEDIN</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="projects" class="projects-section">
             <div class="projects-container">
                 <div class="projects-content">
@@ -235,11 +34,12 @@
                     </div>
                 </div>
 
-                <div class="robot-container" id="robot-canvas-container">
-                    </div>
+                <div class="robot-container" id="robot-canvas-container"></div>
             </div>
         </section>
-    </div> <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    </div>
+
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
     <script type="importmap">
       {
         "imports": {
@@ -251,8 +51,3 @@
     <script type="module" src="robot-logic.js"></script>
 </body>
 </html>
-
-
-
-
-
