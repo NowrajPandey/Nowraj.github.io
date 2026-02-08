@@ -3,83 +3,99 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const container = document.getElementById('robot-canvas-container');
 
-// Scene Setup
+// 1. Scene Setup
 const scene = new THREE.Scene();
-// No background color set here so it uses the CSS background (transparent)
+// NOTE: We do NOT set scene.background here. 
+// This allows the CSS background (#181a1b) to show through.
 
-// Camera
+// 2. Camera Setup
 const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-camera.position.set(0, 2, 8); // Moved camera up and back slightly
-camera.lookAt(0, 1, 0);
+camera.position.set(0, 1.5, 6); // Positioned to look at the robot face-on
+camera.lookAt(0, 1.5, 0);
 
-// Renderer
+// 3. Renderer Setup (Transparent)
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // High quality but performant
 container.appendChild(renderer.domElement);
 
-// Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+// 4. Lighting (Professional Studio Light)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.7); // Soft white light
 scene.add(ambientLight);
 
-const dirLight = new THREE.DirectionalLight(0xffffff, 2);
-dirLight.position.set(5, 10, 7);
-scene.add(dirLight);
+const spotLight = new THREE.SpotLight(0xffffff, 5);
+spotLight.position.set(5, 10, 7);
+spotLight.angle = 0.5;
+spotLight.penumbra = 1;
+scene.add(spotLight);
 
-// Load Robot
-let robot, neck;
+// 5. Load the Robot
+let robot, neck, waist;
 const loader = new GLTFLoader();
 
-// Using the standard "RobotExpressive" model which is reliable and interactive
+// Loading a high-quality robot model
 loader.load('https://cdn.jsdelivr.net/gh/mrdoob/three.js@master/examples/models/gltf/RobotExpressive/RobotExpressive.glb', 
     (gltf) => {
         robot = gltf.scene;
-        robot.scale.set(0.5, 0.5, 0.5); // Adjust scale to fit box
-        robot.position.y = -2; // Move down to center in box
+        
+        // Adjust these numbers to fit the robot inside your 500px box
+        robot.scale.set(0.6, 0.6, 0.6); 
+        robot.position.y = -2.5; // Move down so feet are at bottom
+        
         scene.add(robot);
 
-        // Try to find the Neck bone for rotation
+        // Find bones to animate (Neck and Waist)
         robot.traverse((child) => {
-            if (child.isBone && child.name === 'Neck') {
-                neck = child;
+            if (child.isBone) {
+                if (child.name === 'Neck') neck = child;
+                if (child.name === 'Spine') waist = child;
             }
         });
-        
-        console.log("Robot loaded!");
-    }, 
-    undefined, 
+    },
+    undefined,
     (error) => {
-        console.error('An error happened loading the robot:', error);
+        console.error('Error loading robot:', error);
     }
 );
 
-// Mouse Interaction
+// 6. Mouse Interaction (The "Look At" Effect)
 window.addEventListener('mousemove', (e) => {
-    if (!neck) return;
+    if (!neck || !waist) return;
     
     const rect = container.getBoundingClientRect();
-    // Get mouse position relative to the container (-1 to +1)
-    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
     
-    // Limit rotation so he doesn't break his neck
-    const moveX = x * 0.8; 
-    const moveY = y * 0.5;
+    // Check if mouse is actually near the robot container
+    const isHovering = 
+        e.clientX >= rect.left && 
+        e.clientX <= rect.right && 
+        e.clientY >= rect.top && 
+        e.clientY <= rect.bottom;
 
-    neck.rotation.y = moveX;
-    neck.rotation.x = -moveY;
+    if (isHovering) {
+        // Calculate mouse position (-1 to +1)
+        const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        
+        // Smoothly rotate neck and waist
+        // We use Math.PI to convert degrees to radians
+        neck.rotation.y = x * 0.5;  // Look left/right
+        neck.rotation.x = -y * 0.5; // Look up/down
+        waist.rotation.y = x * 0.2; // Slight body turn
+    }
 });
 
-// Animation Loop
+// 7. Animation Loop
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }
 animate();
 
-// Resize Handler
+// 8. Handle Window Resize
 window.addEventListener('resize', () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    if (container) {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    }
 });
