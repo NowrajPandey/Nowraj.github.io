@@ -76,23 +76,23 @@
    ROBOT CONTAINER STYLING
    ======================================== */
 
+/* Update this in projects-styles.css */
 .robot-container {
     width: 100%;
-    height: 600px; /* Adjust height based on your visual preference */
-    background: var(--secondary-color); /* Brand guideline: #181a1b */
-    border-radius: 12px; /* Brand guideline: Standardized radius */
+    height: 500px; /* Use a fixed height for stability */
+    background: var(--secondary-color); /* #181a1b per brand guidelines */
+    border-radius: 12px; /* Standardized radius per guidelines */
     overflow: hidden;
-    position: relative;
+    position: relative; /* Helps the canvas position itself */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Subtle interactions: Prefer fades */
-    transition: transform 0.3s ease;
 }
 
 spline-viewer {
     width: 100%;
     height: 100%;
+    display: block; /* Ensures it takes up the full space */
 }
 
 /* Grid adjustment to ensure the robot has enough space on the right */
@@ -125,3 +125,4 @@ spline-viewer {
     display: block;
 
 }
+
