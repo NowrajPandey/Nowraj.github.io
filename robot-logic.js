@@ -25,7 +25,7 @@ let robot, neck;
 const loader = new GLTFLoader();
 
 // Using the standard GLB model
-loader.load('https://cdn.jsdelivr.net/gh/mrdoob/three.js@master/examples/models/gltf/RobotExpressive/RobotExpressive.glb', 
+loader.load('./Assets/my-robot.glb', 
     (gltf) => {
         robot = gltf.scene;
         robot.scale.set(0.7, 0.7, 0.7);
