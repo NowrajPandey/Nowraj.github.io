@@ -227,112 +227,222 @@
       </section>
 
      
-<!-- Piano Section -->
-<section id="piano" class="piano-section">
-    <div class="piano-container">
-        <h2 class="piano-heading">Piano Practice</h2>
-        <p class="piano-intro">Play with your keyboard (A-K keys) or click the piano keys</p>
 
-        <div class="piano-layout">
-            <!-- LEFT: VIDEO LIST -->
-            <div class="piano-videos">
-                <div class="video-card">🎵 Deva Shree Ganesha</div>
-                <div class="video-card">🎵 Interstellar Theme</div>
-                <div class="video-card">🎵 Perfect</div>
-                <div class="video-card">🎵 River Flows In You</div>
+Action: file_editor create /app/piano-section-improved.html --file-text "<!-- IMPROVED PIANO SECTION -->
+<!-- Replace the existing piano section in your index.html with this -->
+
+<section id=\"piano\" class=\"piano-section\">
+    <div class=\"piano-container\">
+        <h2 class=\"piano-heading\">Piano Practice Sessions</h2>
+        <p class=\"piano-intro\">Learn and play along with these beautiful piano pieces. Use your keyboard (A-K keys) or click the piano keys directly.</p>
+
+        <div class=\"piano-layout\">
+            <!-- LEFT: YOUTUBE VIDEO CARDS -->
+            <div class=\"piano-videos\">
+                <h3 class=\"videos-subtitle\">Featured Lessons</h3>
+                
+                <!-- Video Card 1 -->
+                <div class=\"video-card\">
+                    <div class=\"video-thumbnail\">
+                        <div class=\"youtube-placeholder\">
+                            <!-- This will be replaced with: <iframe src=\"https://www.youtube.com/embed/VIDEO_ID\" ...></iframe> -->
+                            <div class=\"play-button\">
+                                <svg width=\"68\" height=\"48\" viewBox=\"0 0 68 48\">
+                                    <path d=\"M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z\" fill=\"#f00\"></path>
+                                    <path d=\"M 45,24 27,14 27,34\" fill=\"#fff\"></path>
+                                </svg>
+                            </div>
+                            <span class=\"youtube-text\">YouTube Video</span>
+                        </div>
+                    </div>
+                    <div class=\"video-info\">
+                        <h4>Deva Shree Ganesha</h4>
+                        <p class=\"video-description\">A soulful devotional piece perfect for beginners. Learn the melodic progression and traditional Indian classical elements.</p>
+                        <div class=\"video-meta\">
+                            <span class=\"difficulty beginner\">Beginner</span>
+                            <span class=\"duration\">• 12 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class=\"video-card\">
+                    <div class=\"video-thumbnail\">
+                        <div class=\"youtube-placeholder\">
+                            <div class=\"play-button\">
+                                <svg width=\"68\" height=\"48\" viewBox=\"0 0 68 48\">
+                                    <path d=\"M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z\" fill=\"#f00\"></path>
+                                    <path d=\"M 45,24 27,14 27,34\" fill=\"#fff\"></path>
+                                </svg>
+                            </div>
+                            <span class=\"youtube-text\">YouTube Video</span>
+                        </div>
+                    </div>
+                    <div class=\"video-info\">
+                        <h4>Interstellar Theme</h4>
+                        <p class=\"video-description\">Master Hans Zimmer's epic soundtrack. Learn complex chord progressions and emotional dynamics in this intermediate tutorial.</p>
+                        <div class=\"video-meta\">
+                            <span class=\"difficulty intermediate\">Intermediate</span>
+                            <span class=\"duration\">• 18 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class=\"video-card\">
+                    <div class=\"video-thumbnail\">
+                        <div class=\"youtube-placeholder\">
+                            <div class=\"play-button\">
+                                <svg width=\"68\" height=\"48\" viewBox=\"0 0 68 48\">
+                                    <path d=\"M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z\" fill=\"#f00\"></path>
+                                    <path d=\"M 45,24 27,14 27,34\" fill=\"#fff\"></path>
+                                </svg>
+                            </div>
+                            <span class=\"youtube-text\">YouTube Video</span>
+                        </div>
+                    </div>
+                    <div class=\"video-info\">
+                        <h4>Perfect - Ed Sheeran</h4>
+                        <p class=\"video-description\">A romantic ballad with beautiful arpeggios. Perfect for practicing smooth transitions and expression in your playing.</p>
+                        <div class=\"video-meta\">
+                            <span class=\"difficulty beginner\">Beginner</span>
+                            <span class=\"duration\">• 10 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 4 -->
+                <div class=\"video-card\">
+                    <div class=\"video-thumbnail\">
+                        <div class=\"youtube-placeholder\">
+                            <div class=\"play-button\">
+                                <svg width=\"68\" height=\"48\" viewBox=\"0 0 68 48\">
+                                    <path d=\"M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z\" fill=\"#f00\"></path>
+                                    <path d=\"M 45,24 27,14 27,34\" fill=\"#fff\"></path>
+                                </svg>
+                            </div>
+                            <span class=\"youtube-text\">YouTube Video</span>
+                        </div>
+                    </div>
+                    <div class=\"video-info\">
+                        <h4>River Flows In You - Yiruma</h4>
+                        <p class=\"video-description\">A serene and flowing composition. Advanced techniques including hand independence and sustained pedaling.</p>
+                        <div class=\"video-meta\">
+                            <span class=\"difficulty advanced\">Advanced</span>
+                            <span class=\"duration\">• 22 min</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- RIGHT: EMBEDDED PIANO -->
-            <div class="piano-right">
-                <!-- Embedded Piano Component -->
-                <div class="embedded-piano">
-                    <!-- Piano Header -->
-                    <div class="piano-controls-mini">
-                        <div class="control-mini">
-                            <i class="fas fa-volume-up"></i>
-                            <input type="range" id="embedded-volume" min="0" max="100" value="70">
-                        </div>
-                        <div class="control-mini">
-                            <i class="fas fa-wave-square"></i>
-                            <select id="embedded-waveform">
-                                <option value="sine">Sine</option>
-                                <option value="triangle">Triangle</option>
-                                <option value="sawtooth">Sawtooth</option>
-                                <option value="square">Square</option>
-                            </select>
-                        </div>
-                        <div class="control-mini">
-                            <i class="fas fa-sliders-h"></i>
-                            <select id="embedded-octave">
-                                <option value="3">3</option>
-                                <option value="4" selected>4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Piano Keys -->
-                    <div class="piano-embedded-wrapper">
-                        <div class="piano-embedded">
-                            <!-- White Keys -->
-                            <div class="white-keys-embedded">
-                                <div class="key white" data-note="C" data-key="a">
-                                    <div class="key-label">A<br><span class="note-name">C</span></div>
+            <!-- RIGHT: INTERACTIVE PIANO -->
+            <div class=\"piano-right\">
+                <div class=\"piano-sticky-wrapper\">
+                    <div class=\"embedded-piano\">
+                        <!-- Piano Header with Controls -->
+                        <div class=\"piano-header\">
+                            <h4 class=\"piano-title\">Interactive Piano</h4>
+                            <div class=\"piano-controls-mini\">
+                                <div class=\"control-mini\">
+                                    <label>
+                                        <i class=\"fas fa-volume-up\"></i>
+                                        <input type=\"range\" id=\"embedded-volume\" min=\"0\" max=\"100\" value=\"70\">
+                                    </label>
                                 </div>
-                                <div class="key white" data-note="D" data-key="s">
-                                    <div class="key-label">S<br><span class="note-name">D</span></div>
+                                <div class=\"control-mini\">
+                                    <label>
+                                        <i class=\"fas fa-wave-square\"></i>
+                                        <select id=\"embedded-waveform\">
+                                            <option value=\"sine\">Sine</option>
+                                            <option value=\"triangle\">Triangle</option>
+                                            <option value=\"sawtooth\">Sawtooth</option>
+                                            <option value=\"square\">Square</option>
+                                        </select>
+                                    </label>
                                 </div>
-                                <div class="key white" data-note="E" data-key="d">
-                                    <div class="key-label">D<br><span class="note-name">E</span></div>
-                                </div>
-                                <div class="key white" data-note="F" data-key="f">
-                                    <div class="key-label">F<br><span class="note-name">F</span></div>
-                                </div>
-                                <div class="key white" data-note="G" data-key="g">
-                                    <div class="key-label">G<br><span class="note-name">G</span></div>
-                                </div>
-                                <div class="key white" data-note="A" data-key="h">
-                                    <div class="key-label">H<br><span class="note-name">A</span></div>
-                                </div>
-                                <div class="key white" data-note="B" data-key="j">
-                                    <div class="key-label">J<br><span class="note-name">B</span></div>
-                                </div>
-                                <div class="key white" data-note="C" data-key="k" data-octave="5">
-                                    <div class="key-label">K<br><span class="note-name">C</span></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Black Keys -->
-                            <div class="black-keys-embedded">
-                                <div class="key black" data-note="C#" data-key="w">
-                                    <div class="key-label">W<br><span class="note-name">C#</span></div>
-                                </div>
-                                <div class="key black" data-note="D#" data-key="e">
-                                    <div class="key-label">E<br><span class="note-name">D#</span></div>
-                                </div>
-                                <div class="key black" data-note="F#" data-key="t">
-                                    <div class="key-label">T<br><span class="note-name">F#</span></div>
-                                </div>
-                                <div class="key black" data-note="G#" data-key="y">
-                                    <div class="key-label">Y<br><span class="note-name">G#</span></div>
-                                </div>
-                                <div class="key black" data-note="A#" data-key="u">
-                                    <div class="key-label">U<br><span class="note-name">A#</span></div>
+                                <div class=\"control-mini\">
+                                    <label>
+                                        <i class=\"fas fa-sliders-h\"></i>
+                                        <select id=\"embedded-octave\">
+                                            <option value=\"3\">Oct 3</option>
+                                            <option value=\"4\" selected>Oct 4</option>
+                                            <option value=\"5\">Oct 5</option>
+                                        </select>
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Current Note Display -->
-                    <div class="embedded-note-display">
-                        <i class="fas fa-music"></i>
-                        <span id="embedded-current-note">C4</span>
+                        <!-- Piano Keys -->
+                        <div class=\"piano-embedded-wrapper\">
+                            <div class=\"piano-embedded\">
+                                <!-- White Keys -->
+                                <div class=\"white-keys-embedded\">
+                                    <div class=\"key white\" data-note=\"C\" data-key=\"a\">
+                                        <div class=\"key-label\">A<br><span class=\"note-name\">C</span></div>
+                                    </div>
+                                    <div class=\"key white\" data-note=\"D\" data-key=\"s\">
+                                        <div class=\"key-label\">S<br><span class=\"note-name\">D</span></div>
+                                    </div>
+                                    <div class=\"key white\" data-note=\"E\" data-key=\"d\">
+                                        <div class=\"key-label\">D<br><span class=\"note-name\">E</span></div>
+                                    </div>
+                                    <div class=\"key white\" data-note=\"F\" data-key=\"f\">
+                                        <div class=\"key-label\">F<br><span class=\"note-name\">F</span></div>
+                                    </div>
+                                    <div class=\"key white\" data-note=\"G\" data-key=\"g\">
+                                        <div class=\"key-label\">G<br><span class=\"note-name\">G</span></div>
+                                    </div>
+                                    <div class=\"key white\" data-note=\"A\" data-key=\"h\">
+                                        <div class=\"key-label\">H<br><span class=\"note-name\">A</span></div>
+                                    </div>
+                                    <div class=\"key white\" data-note=\"B\" data-key=\"j\">
+                                        <div class=\"key-label\">J<br><span class=\"note-name\">B</span></div>
+                                    </div>
+                                    <div class=\"key white\" data-note=\"C\" data-key=\"k\" data-octave=\"5\">
+                                        <div class=\"key-label\">K<br><span class=\"note-name\">C</span></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Black Keys -->
+                                <div class=\"black-keys-embedded\">
+                                    <div class=\"key black\" data-note=\"C#\" data-key=\"w\">
+                                        <div class=\"key-label\">W<br><span class=\"note-name\">C#</span></div>
+                                    </div>
+                                    <div class=\"key black\" data-note=\"D#\" data-key=\"e\">
+                                        <div class=\"key-label\">E<br><span class=\"note-name\">D#</span></div>
+                                    </div>
+                                    <div class=\"key black\" data-note=\"F#\" data-key=\"t\">
+                                        <div class=\"key-label\">T<br><span class=\"note-name\">F#</span></div>
+                                    </div>
+                                    <div class=\"key black\" data-note=\"G#\" data-key=\"y\">
+                                        <div class=\"key-label\">Y<br><span class=\"note-name\">G#</span></div>
+                                    </div>
+                                    <div class=\"key black\" data-note=\"A#\" data-key=\"u\">
+                                        <div class=\"key-label\">U<br><span class=\"note-name\">A#</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Current Note Display -->
+                        <div class=\"embedded-note-display\">
+                            <i class=\"fas fa-music\"></i>
+                            <span id=\"embedded-current-note\">C4</span>
+                        </div>
+
+                        <!-- Keyboard Hint -->
+                        <div class=\"keyboard-hint\">
+                            <p>💡 Use keys A-K to play white notes, W-E-T-Y-U for sharps</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
            
     <script>
       // --- Navigation Logic ---
