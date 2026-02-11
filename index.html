@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="projects-styles.css" />
     <script
@@ -49,12 +51,12 @@
           <div class="bubble active-bubble"></div>
           <div class="bubble hover-bubble"></div>
           <nav class="nav">
-            <a class="active" href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">Piano</a>
-            <a href="#">Blogs</a>
-            <a href="#">Study</a>
-            <a href="#">About</a>
+            <a class="active" href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#piano">Piano</a>
+            <a href="#blogs">Blogs</a>
+            <a href="#study">Study</a>
+            <a href="#about">About</a>
           </nav>
         </div>
       </div>
@@ -100,7 +102,7 @@
         <source src="Assets/Background_Music_Loop.wav" type="audio/wav" />
       </audio>
 
-      <main class="hero-section">
+      <main id="home" class="hero-section">
         <div class="text-content">
           <span class="hero-eyebrow">Hi there,</span>
           <h1 class="hero-title">
@@ -167,8 +169,6 @@
         </div>
       </section>
 
-     
-
       <section id="projects" class="projects-section">
         <div class="projects-container">
           <div class="projects-content">
@@ -179,24 +179,42 @@
             </p>
 
             <div class="project-cards">
-              <div class="project-card">
-                <h3>AI-Powered Web Tools</h3>
-                <p>
-                  Building intuitive interfaces leveraging cutting-edge AI
-                  technologies.
-                </p>
-              </div>
-              <div class="project-card">
-                <h3>Interactive Design</h3>
-                <p>
-                  Creating engaging user experiences with modern web
-                  technologies.
-                </p>
-              </div>
-              <div class="project-card">
-                <h3>Full-Stack Applications</h3>
-                <p>Developing scalable solutions from concept to deployment.</p>
-              </div>
+              <a
+                href="https://pawanpandeymusic.github.io"
+                target="_blank"
+                class="project-card-link"
+              >
+                <div class="project-card">
+                  <h3>My Father's Portfolio</h3>
+                  <p>
+                    A beautiful portfolio website for my father showcasing his
+                    musical journey and achievements.
+                  </p>
+                  <span class="project-link">pawanpandeymusic.github.io →</span>
+                </div>
+              </a>
+
+              <a href="#" class="project-card-link">
+                <div class="project-card">
+                  <h3>My Portfolio</h3>
+                  <p>
+                    This current website - built with modern web technologies,
+                    featuring interactive 3D elements.
+                  </p>
+                  <span class="project-link">View Details →</span>
+                </div>
+              </a>
+
+              <a href="#" class="project-card-link">
+                <div class="project-card">
+                  <h3>AI-Powered Web Tools</h3>
+                  <p>
+                    Building intuitive interfaces leveraging cutting-edge AI
+                    technologies.
+                  </p>
+                  <span class="project-link">Coming Soon →</span>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -207,10 +225,117 @@
           </div>
         </div>
       </section>
-    </div>
 
+     
+<!-- Piano Section -->
+<section id="piano" class="piano-section">
+    <div class="piano-container">
+        <h2 class="piano-heading">Piano Practice</h2>
+        <p class="piano-intro">Play with your keyboard (A-K keys) or click the piano keys</p>
+
+        <div class="piano-layout">
+            <!-- LEFT: VIDEO LIST -->
+            <div class="piano-videos">
+                <div class="video-card">🎵 Deva Shree Ganesha</div>
+                <div class="video-card">🎵 Interstellar Theme</div>
+                <div class="video-card">🎵 Perfect</div>
+                <div class="video-card">🎵 River Flows In You</div>
+            </div>
+
+            <!-- RIGHT: EMBEDDED PIANO -->
+            <div class="piano-right">
+                <!-- Embedded Piano Component -->
+                <div class="embedded-piano">
+                    <!-- Piano Header -->
+                    <div class="piano-controls-mini">
+                        <div class="control-mini">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" id="embedded-volume" min="0" max="100" value="70">
+                        </div>
+                        <div class="control-mini">
+                            <i class="fas fa-wave-square"></i>
+                            <select id="embedded-waveform">
+                                <option value="sine">Sine</option>
+                                <option value="triangle">Triangle</option>
+                                <option value="sawtooth">Sawtooth</option>
+                                <option value="square">Square</option>
+                            </select>
+                        </div>
+                        <div class="control-mini">
+                            <i class="fas fa-sliders-h"></i>
+                            <select id="embedded-octave">
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Piano Keys -->
+                    <div class="piano-embedded-wrapper">
+                        <div class="piano-embedded">
+                            <!-- White Keys -->
+                            <div class="white-keys-embedded">
+                                <div class="key white" data-note="C" data-key="a">
+                                    <div class="key-label">A<br><span class="note-name">C</span></div>
+                                </div>
+                                <div class="key white" data-note="D" data-key="s">
+                                    <div class="key-label">S<br><span class="note-name">D</span></div>
+                                </div>
+                                <div class="key white" data-note="E" data-key="d">
+                                    <div class="key-label">D<br><span class="note-name">E</span></div>
+                                </div>
+                                <div class="key white" data-note="F" data-key="f">
+                                    <div class="key-label">F<br><span class="note-name">F</span></div>
+                                </div>
+                                <div class="key white" data-note="G" data-key="g">
+                                    <div class="key-label">G<br><span class="note-name">G</span></div>
+                                </div>
+                                <div class="key white" data-note="A" data-key="h">
+                                    <div class="key-label">H<br><span class="note-name">A</span></div>
+                                </div>
+                                <div class="key white" data-note="B" data-key="j">
+                                    <div class="key-label">J<br><span class="note-name">B</span></div>
+                                </div>
+                                <div class="key white" data-note="C" data-key="k" data-octave="5">
+                                    <div class="key-label">K<br><span class="note-name">C</span></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Black Keys -->
+                            <div class="black-keys-embedded">
+                                <div class="key black" data-note="C#" data-key="w">
+                                    <div class="key-label">W<br><span class="note-name">C#</span></div>
+                                </div>
+                                <div class="key black" data-note="D#" data-key="e">
+                                    <div class="key-label">E<br><span class="note-name">D#</span></div>
+                                </div>
+                                <div class="key black" data-note="F#" data-key="t">
+                                    <div class="key-label">T<br><span class="note-name">F#</span></div>
+                                </div>
+                                <div class="key black" data-note="G#" data-key="y">
+                                    <div class="key-label">Y<br><span class="note-name">G#</span></div>
+                                </div>
+                                <div class="key black" data-note="A#" data-key="u">
+                                    <div class="key-label">U<br><span class="note-name">A#</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Note Display -->
+                    <div class="embedded-note-display">
+                        <i class="fas fa-music"></i>
+                        <span id="embedded-current-note">C4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+           
     <script>
-      // --- Navigation & Audio Logic from your original file ---
+      // --- Navigation Logic ---
       const links = document.querySelectorAll(".nav a");
       const activeBubble = document.querySelector(".active-bubble");
       const hoverBubble = document.querySelector(".hover-bubble");
@@ -227,13 +352,32 @@
       if (initialActive)
         setTimeout(() => moveBubble(initialActive, activeBubble), 10);
 
+      // Smooth scrolling for navigation
       links.forEach((link) => {
         link.addEventListener("click", (e) => {
           e.preventDefault();
-          links.forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
-          moveBubble(link, activeBubble);
+          const targetId = link.getAttribute("href");
+          if (targetId.startsWith("#")) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              // Update active state
+              links.forEach((l) => l.classList.remove("active"));
+              link.classList.add("active");
+              moveBubble(link, activeBubble);
+
+              // Smooth scroll
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+
+              // Close mobile menu if open
+              navContainer.classList.remove("open");
+              hamburger.classList.remove("active");
+            }
+          }
         });
+
         link.addEventListener("mouseenter", () => {
           hoverBubble.style.opacity = "1";
           moveBubble(link, hoverBubble);
@@ -291,34 +435,75 @@
           updateIcon(false);
         }
       });
+
+      // Typewriter Effect
+      const typewriterText = document.querySelector(".typewriter-dynamic");
+      const words = [
+        "an Aspiring Developer",
+        "a Student",
+        "a Piano Player",
+        "a Dreamer",
+      ];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let isEnd = false;
+
+      function typeWriter() {
+        const currentWord = words[wordIndex];
+
+        if (isDeleting) {
+          typewriterText.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typewriterText.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          isEnd = true;
+          setTimeout(typeWriter, 1500);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(typeWriter, 500);
+        } else {
+          const speed = isDeleting ? 50 : 100;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      // Start typewriter effect
+      setTimeout(typeWriter, 1000);
+
+      // Remove Spline logo
+      const observer = new MutationObserver((mutations) => {
+        const viewer = document.querySelector("spline-viewer");
+        if (viewer && viewer.shadowRoot) {
+          // 1. Target the logo div specifically
+          const logo = viewer.shadowRoot.querySelector("#logo");
+          if (logo) {
+            logo.remove();
+            console.log("Logo removed via MutationObserver");
+          }
+
+          // 2. Target the link that often wraps the logo
+          const splineLink = viewer.shadowRoot.querySelector(
+            'a[href*="spline.design"]',
+          );
+          if (splineLink) {
+            splineLink.style.display = "none";
+            splineLink.style.visibility = "hidden";
+          }
+        }
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
     </script>
 
-    <script type="module" src="robot-logic.js"></script>
-
-    <script>
-  const observer = new MutationObserver((mutations) => {
-    const viewer = document.querySelector('spline-viewer');
-    if (viewer && viewer.shadowRoot) {
-      // 1. Target the logo div specifically
-      const logo = viewer.shadowRoot.querySelector('#logo');
-      if (logo) {
-        logo.remove();
-        console.log("Logo removed via MutationObserver");
-      }
-      
-      // 2. Target the link that often wraps the logo
-      const splineLink = viewer.shadowRoot.querySelector('a[href*="spline.design"]');
-      if (splineLink) {
-        splineLink.style.display = 'none';
-        splineLink.style.visibility = 'hidden';
-      }
-    }
-  });
-
-  // Start watching the body for when the spline-viewer is fully ready
-  observer.observe(document.body, { childList: true, subtree: true });
-</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="robot-logic.js"></script>
+    <!-- Embedded Piano Script -->
+<script src="piano-embedded.js"></script>
   </body>
 </html>
-
-
