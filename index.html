@@ -149,7 +149,7 @@
 
             // Toggle Button
             soundBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Don't trigger the window click
+                e.stopPropagation();
                 if (audio.paused) {
                     audio.play();
                     updateIcon(true);
@@ -158,6 +158,42 @@
                     updateIcon(false);
                 }
             });
+
+            // Typewriter Animation
+            const words = ["chaotic", "data-driven", "a vibe-coder", "a student", "smart", "mad"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typeSpeed = 150;
+            const deleteSpeed = 80;
+            const pauseTime = 2000;
+            const typewriterEl = document.querySelector('.typewriter-dynamic');
+
+            function type() {
+                const currentWord = words[wordIndex];
+                
+                if (isDeleting) {
+                    typewriterEl.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typewriterEl.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let timeout = isDeleting ? deleteSpeed : typeSpeed;
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    timeout = pauseTime;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+
+                setTimeout(type, timeout);
+            }
+
+            type();
         </script>
 
         <!-- Main Content (Hero) -->
@@ -190,18 +226,20 @@
                     <h2 class="about-heading">Nowraj Pandey is</h2>
 
                     <div class="typewriter-container">
-                        <span class="typewriter-dynamic">chaotic</span>
+                        <span class="typewriter-dynamic"></span>
                     </div>
 
                     <div class="about-bio">
-                        <p>I am an aspiring developer and 11th-grade student at West Point School (ISC), driven by a
-                            passion for building the future of the web. For over two years, I've been immersed in 'vibe
-                            coding'—leveraging AI and intuitive tools to bring ideas to life rapidly.</p>
+                        <div class="bio-card">
+                            <p>I am an aspiring developer and 11th-grade student at West Point School (ISC), driven by a
+                                passion for building the future of the web. For over two years, I've been immersed in 'vibe
+                                coding'—leveraging AI and intuitive tools to bring ideas to life rapidly.</p>
 
-                        <p>My goal is to bridge the gap between imagination and functional software, eventually
-                            engineering AI-driven solutions at industry leaders like Google or Microsoft. I'm dedicated
-                            to refining my craft, scaling my skills, and building a career that makes a meaningful
-                            impact (and my parents proud).</p>
+                            <p>My goal is to bridge the gap between imagination and functional software, eventually
+                                engineering AI-driven solutions at industry leaders like Google or Microsoft. I'm dedicated
+                                to refining my craft, scaling my skills, and building a career that makes a meaningful
+                                impact (and my parents proud).</p>
+                        </div>
                     </div>
 
                     <div class="about-actions">
