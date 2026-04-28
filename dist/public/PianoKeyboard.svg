@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="161" height="120" viewBox="0 0 161 120">
+  <rect fill="white" stroke="black" x="0" y="0" width="23" height="120" />
+  <rect fill="white" stroke="black" x="23" y="0" width="23" height="120" />
+  <rect fill="white" stroke="black" x="46" y="0" width="23" height="120" />
+  <rect fill="white" stroke="black" x="69" y="0" width="23" height="120" />
+  <rect fill="white" stroke="black" x="92" y="0" width="23" height="120" />
+  <rect fill="white" stroke="black" x="115" y="0" width="23" height="120" />
+  <rect fill="white" stroke="black" x="138" y="0" width="23" height="120" />
+  <rect fill="black" stroke="black" x="14" y="0" width="13" height="80" />
+  <rect fill="black" stroke="black" x="42" y="0" width="13" height="80" />
+  <rect fill="black" stroke="black" x="82" y="0" width="13" height="80" />
+  <rect fill="black" stroke="black" x="108" y="0" width="13" height="80" />
+  <rect fill="black" stroke="black" x="135" y="0" width="13" height="80" />
+</svg>
