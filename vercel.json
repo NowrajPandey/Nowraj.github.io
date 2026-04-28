@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd artifacts/portfolio && npm run build",
+  "outputDirectory": "artifacts/portfolio/dist",
+  "installCommand": "cd artifacts/portfolio && npm install"
+}
